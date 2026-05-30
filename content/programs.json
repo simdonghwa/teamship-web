@@ -1,0 +1,72 @@
+{
+  "corporate": [
+    {
+      "id": "corporate-workshop",
+      "category": "corporate",
+      "title": "AX Teamship™ 워크숍",
+      "duration": "3~6시간 (반일~전일)",
+      "target": "팀장·리더 그룹, 전사 팀빌딩",
+      "description": "AX Teamship™ 5요소를 기반으로 AI 전환 시대에 살아남는 팀의 조건을 체험합니다. 진단 → 강의 → 실습 → 팀 플랜 작성까지 완결형 프로그램.",
+      "features": ["SAFETY·TRUST·ENERGY·GROWTH·MOMENTUM 5요소 체험", "팀 자기결정력 진단", "실전 케이스 워크숍", "팀 실행 플랜 수립"],
+      "cta": "워크숍 문의",
+      "ctaHref": "/contact?type=corporate&program=workshop"
+    },
+    {
+      "id": "corporate-bootcamp",
+      "category": "corporate",
+      "title": "AX Bootcamp",
+      "duration": "1박 2일",
+      "target": "C-레벨·임원·핵심 리더",
+      "description": "리더십 전환이 필요한 조직의 핵심 인원을 위한 집중 부트캠프. AI 시대 리더의 조건을 경험으로 체득합니다.",
+      "features": ["심화 리더십 진단", "1:1 피드백 세션", "팀십 실행 로드맵 설계", "사후 코칭 1회 포함"],
+      "cta": "부트캠프 문의",
+      "ctaHref": "/contact?type=corporate&program=bootcamp"
+    },
+    {
+      "id": "corporate-keynote",
+      "category": "corporate",
+      "title": "기업 강연",
+      "duration": "60~90분",
+      "target": "전사 직원, 컨퍼런스, 행사",
+      "description": "AX 시대 팀십의 의미를 스토리 중심으로 전달하는 키노트 강연. Microsoft 21년 경험과 두 아이 엄마의 관점을 결합합니다.",
+      "features": ["AX 시대 리더십 인사이트", "실제 사례 중심 스토리텔링", "Q&A 포함", "맞춤형 커스터마이징 가능"],
+      "cta": "강연 의뢰",
+      "ctaHref": "/contact?type=corporate&program=keynote"
+    }
+  ],
+  "family": [
+    {
+      "id": "family-workshop",
+      "category": "family",
+      "title": "가족 팀십 워크숍",
+      "duration": "3시간 (반나절)",
+      "target": "부모 (자녀 선택 동반)",
+      "description": "자기결정력 진단부터 가족 실행 플랜까지. '우리 가족도 팀이 될 수 있다'는 경험을 3시간 안에 만들어 드립니다.",
+      "features": ["자기결정력 진단 (부모+자녀)", "AX Teamship™ 5요소 가족 버전 강의", "가족 강점 발견 실습", "가족 팀십 플랜 작성"],
+      "cta": "워크숍 신청",
+      "ctaHref": "/contact?type=family&program=workshop"
+    },
+    {
+      "id": "family-lecture",
+      "category": "family",
+      "title": "가족 팀십 강의",
+      "duration": "60~90분",
+      "target": "학부모 총회, 기업 행사, 강연 기획",
+      "description": "AI 시대 자녀의 자기결정력을 주제로 한 스토리 중심 강연. 진단 QR 코드를 활용해 현장에서 바로 체험합니다.",
+      "features": ["Pioneer Mom 관점의 스토리 강연", "현장 자기결정력 진단 QR", "부모-자녀 소통 실천법", "맞춤형 기관·학교 버전 가능"],
+      "cta": "강의 문의",
+      "ctaHref": "/contact?type=family&program=lecture"
+    },
+    {
+      "id": "family-corporate",
+      "category": "family",
+      "title": "임직원 자녀교육",
+      "duration": "2~3시간",
+      "target": "기업 HR + 임직원 가족",
+      "description": "복지 패키지로 제공하는 임직원 가족 팀십 교육. 기업의 팀십 문화를 가정으로 연결합니다.",
+      "features": ["기업 맞춤 가족 팀십 커리큘럼", "임직원 자녀 자기결정력 진단", "반기 1회 정기 운영 가능", "기업 제안 별도 협의"],
+      "cta": "기업 제안 문의",
+      "ctaHref": "/contact?type=family&program=corporate-family"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+/* ── PRD Design System ── */
+:root {
+  --navy:    #1C1409;
+  --rust:    #C4622D;
+  --rust-l:  #FEF5F0;
+  --gold:    #C9A84C;
+  --gold-l:  #FDF6E0;
+  --sage:    #4D7C5A;
+  --sage-l:  #EDF5EF;
+  --teal:    #2E6E7E;
+  --teal-l:  #EBF4F6;
+  --purple:  #6B4E8A;
+  --purple-l:#F3EFF9;
+  --cream:   #F6F1E8;
+  --cream2:  #EDE5D4;
+  --gray:    #7A6248;
+  --lgray:   #C4B8A8;
+  --rule:    #E8E0D4;
+  --text:    #2A1F12;
+  --white:   #FFFFFF;
+}
+
+@theme inline {
+  --color-navy:      var(--navy);
+  --color-rust:      var(--rust);
+  --color-rust-l:    var(--rust-l);
+  --color-gold:      var(--gold);
+  --color-gold-l:    var(--gold-l);
+  --color-sage:      var(--sage);
+  --color-sage-l:    var(--sage-l);
+  --color-teal:      var(--teal);
+  --color-teal-l:    var(--teal-l);
+  --color-purple:    var(--purple);
+  --color-purple-l:  var(--purple-l);
+  --color-cream:     var(--cream);
+  --color-cream2:    var(--cream2);
+  --color-gray-warm: var(--gray);
+  --color-lgray:     var(--lgray);
+  --color-rule:      var(--rule);
+  --color-text:      var(--text);
+
+  --font-serif: var(--font-noto-serif-kr), 'Noto Serif KR', Georgia, serif;
+  --font-sans:  var(--font-pretendard), 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:  var(--font-jetbrains),     'JetBrains Mono', monospace;
+}
+
+/* ── @layer base 안에 놓아야 Tailwind utilities에게 지지 않음 ── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* ── 공통 유틸 (레이어 없이 — 충분히 구체적인 클래스) ── */
+.section-container {
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.heading-serif {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.25;
+}

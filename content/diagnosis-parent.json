@@ -1,0 +1,83 @@
+{
+  "title": "부모 자기결정력 진단",
+  "subtitle": "우리 아이를 대하는 내 방식을 점검합니다",
+  "totalQuestions": 18,
+  "scale": ["전혀 그렇지 않다", "그렇지 않다", "보통이다", "그렇다", "매우 그렇다"],
+  "categories": ["자율성 지지", "유능감 지지", "관계성"],
+  "questions": [
+    { "id": 1, "text": "아이가 스스로 결정을 내릴 때 기다려줄 수 있다.", "category": "자율성 지지", "reverse": false },
+    { "id": 2, "text": "아이의 선택이 마음에 들지 않아도 이유를 먼저 듣는다.", "category": "자율성 지지", "reverse": false },
+    { "id": 3, "text": "아이의 공부나 진로를 내가 정해주는 편이다.", "category": "자율성 지지", "reverse": true },
+    { "id": 4, "text": "아이가 실수했을 때 다음에 잘하면 된다고 말해준다.", "category": "자율성 지지", "reverse": false },
+    { "id": 5, "text": "아이가 원하는 것과 내가 원하는 것이 다를 때 내 방식을 고집한다.", "category": "자율성 지지", "reverse": true },
+    { "id": 6, "text": "아이가 무언가를 해냈을 때 구체적으로 칭찬한다.", "category": "유능감 지지", "reverse": false },
+    { "id": 7, "text": "아이가 어려움을 겪을 때 먼저 해결책을 제시하는 편이다.", "category": "유능감 지지", "reverse": true },
+    { "id": 8, "text": "아이가 잘하는 것을 찾아 발전시킬 수 있도록 돕는다.", "category": "유능감 지지", "reverse": false },
+    { "id": 9, "text": "아이의 약점을 보완하는 것이 강점을 키우는 것보다 중요하다고 생각한다.", "category": "유능감 지지", "reverse": true },
+    { "id": 10, "text": "아이가 도전해서 실패해도 과정을 격려한다.", "category": "유능감 지지", "reverse": false },
+    { "id": 11, "text": "아이가 힘들다고 말할 때 충분히 공감해준다.", "category": "유능감 지지", "reverse": false },
+    { "id": 12, "text": "최근 한 달간 아이와 진지한 대화를 나눈 적이 있다.", "category": "관계성", "reverse": false },
+    { "id": 13, "text": "아이가 나에게 고민을 먼저 털어놓는다.", "category": "관계성", "reverse": false },
+    { "id": 14, "text": "가족이 함께 결정하고 실천한 일이 최근 있었다.", "category": "관계성", "reverse": false },
+    { "id": 15, "text": "아이와 이야기할 때 스마트폰을 내려놓는다.", "category": "관계성", "reverse": false },
+    { "id": 16, "text": "나는 아이 앞에서 내 실수나 약점을 솔직하게 말하는 편이다.", "category": "관계성", "reverse": false },
+    { "id": 17, "text": "아이의 친구관계나 학교생활을 자주 점검하고 개입하는 편이다.", "category": "관계성", "reverse": true },
+    { "id": 18, "text": "아이가 AI 시대에 스스로 판단하는 힘을 길러야 한다고 생각한다.", "category": "자율성 지지", "reverse": false }
+  ],
+  "types": [
+    {
+      "index": 0,
+      "name": "균형성장형",
+      "emoji": "🌿",
+      "description": "자율성 지지와 따뜻한 관계를 균형 있게 갖춘 부모입니다. 아이가 자기결정력을 키우기 좋은 환경을 만들고 있어요.",
+      "advice": "이미 잘 하고 있습니다. 다음 단계는 아이와 함께 '가족 팀십 플랜'을 세우는 것입니다.",
+      "cta": "가족 팀십 워크숍 알아보기",
+      "ctaHref": "/family#workshop"
+    },
+    {
+      "index": 1,
+      "name": "자율존중형",
+      "emoji": "🦋",
+      "description": "아이의 선택을 잘 기다리는 편이지만, 관계적 연결을 더 깊게 할 여지가 있습니다.",
+      "advice": "선택을 기다리는 것에서 나아가 '함께 결정하는 경험'을 늘려보세요.",
+      "cta": "가족 팀십 강의 신청",
+      "ctaHref": "/contact?type=family&program=lecture"
+    },
+    {
+      "index": 2,
+      "name": "열정과잉형",
+      "emoji": "🔥",
+      "description": "아이를 위한 마음이 크지만, 그 에너지가 때로 아이의 자율성을 앞서갑니다.",
+      "advice": "오늘부터 딱 한 가지만 아이에게 맡겨보세요. 기다리는 연습이 팀십의 시작입니다.",
+      "cta": "가족 팀십 워크숍 신청",
+      "ctaHref": "/contact?type=family&program=workshop"
+    },
+    {
+      "index": 3,
+      "name": "불안주도형",
+      "emoji": "😰",
+      "description": "아이의 미래에 대한 걱정이 앞서 아이의 결정을 자꾸 되돌리게 되는 패턴입니다.",
+      "advice": "불안은 자연스러운 감정입니다. 그 불안을 아이와 함께 나누는 것이 팀십의 첫 걸음입니다.",
+      "cta": "가족 팀십 워크숍 신청",
+      "ctaHref": "/contact?type=family&program=workshop"
+    },
+    {
+      "index": 4,
+      "name": "과잉보호형",
+      "emoji": "🐣",
+      "description": "아이를 보호하려는 마음이 강해 아이가 실패를 경험할 기회를 놓치고 있을 수 있습니다.",
+      "advice": "작은 실패는 아이의 근육을 키웁니다. '실패해도 괜찮아'를 먼저 연습해보세요.",
+      "cta": "가족 팀십 워크숍 신청",
+      "ctaHref": "/contact?type=family&program=workshop"
+    },
+    {
+      "index": 5,
+      "name": "회복성장형",
+      "emoji": "🌱",
+      "description": "현재는 어려움이 있지만, 변화하려는 의지가 있는 부모입니다. 지금 이 진단을 한 것 자체가 시작입니다.",
+      "advice": "혼자 해결하려 하지 마세요. 가족 팀십 워크숍에서 함께 시작하면 훨씬 쉬워집니다.",
+      "cta": "가족 팀십 워크숍 신청",
+      "ctaHref": "/contact?type=family&program=workshop"
+    }
+  ]
+}
