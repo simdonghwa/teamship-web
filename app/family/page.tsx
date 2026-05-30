@@ -1,8 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { Shield, Handshake, Zap, Sprout, Rocket, Quote } from 'lucide-react';
 import elements from '@/content/family-teamship.json';
 import programsData from '@/content/programs.json';
 import CTAButton from '@/components/shared/CTAButton';
+
+const ELEMENT_ICONS: Record<string, React.ElementType> = {
+  SAFETY: Shield, TRUST: Handshake, ENERGY: Zap, GROWTH: Sprout, MOMENTUM: Rocket,
+};
 
 export const metadata: Metadata = {
   title: '가족 팀십',
@@ -52,7 +57,10 @@ export default function FamilyPage() {
       <section className="py-14" style={{ background: 'var(--sage-l)' }}>
         <div className="section-container max-w-3xl">
           <div className="flex gap-5 items-start">
-            <span className="text-4xl flex-shrink-0 mt-1">💡</span>
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-1"
+              style={{ background: 'rgba(77,124,90,.15)' }}>
+              <Quote size={18} strokeWidth={1.5} style={{ color: 'var(--sage)' }} />
+            </div>
             <div>
               <p className="text-[11px] font-bold tracking-widest uppercase mb-3" style={{ color: 'var(--sage)' }}>
                 Pioneer Mom의 이야기
@@ -84,11 +92,15 @@ export default function FamilyPage() {
             {elements.map((el) => {
               const color = ELEMENT_COLORS[el.key];
               const bg = ELEMENT_BG[el.key];
+              const Icon = ELEMENT_ICONS[el.key];
               return (
                 <div key={el.key} className="rounded-xl border border-[var(--rule)] p-6" style={{ background: bg }}>
                   <div className="grid md:grid-cols-3 gap-4 items-start">
                     <div className="flex items-center gap-3">
-                      <span className="text-3xl">{el.icon}</span>
+                      <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                        style={{ background: `color-mix(in srgb, ${color} 15%, transparent)` }}>
+                        {Icon && <Icon size={18} strokeWidth={1.5} style={{ color }} />}
+                      </div>
                       <div>
                         <p className="text-[10px] font-bold tracking-widest uppercase" style={{ color }}>{el.key}</p>
                         <p className="text-sm font-semibold mt-0.5" style={{ color: 'var(--navy)' }}>{el.family}</p>

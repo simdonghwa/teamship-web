@@ -1,9 +1,10 @@
 import Link from 'next/link';
+import { Building2, Users, GraduationCap } from 'lucide-react';
 
 const UNIVERSES = [
   {
     axis: 'AXIS 01',
-    icon: '🏢',
+    Icon: Building2,
     title: '기업 팀십',
     desc: 'AX Teamship™ 5요소 기반 워크숍·강의·컨설팅. AI 전환기에 팀을 다시 세우는 법.',
     tag: '현재 주수익',
@@ -15,7 +16,7 @@ const UNIVERSES = [
   },
   {
     axis: 'AXIS 02 · NEW',
-    icon: '👨‍👩‍👧‍👦',
+    Icon: Users,
     title: '가족 팀십',
     desc: '자기결정력 × AX Teamship™. 부모와 아이가 함께 만드는 첫 번째 팀 — 진단 + 워크숍.',
     tag: '신규 확장',
@@ -27,7 +28,7 @@ const UNIVERSES = [
   },
   {
     axis: 'AXIS 03 · COMING SOON',
-    icon: '🏫',
+    Icon: GraduationCap,
     title: '교육 팀십',
     desc: '교사-학생 팀십. 교육청·학교 연계 프로그램. 지금 대기 명단에 등록하세요.',
     tag: '씨앗 단계',
@@ -63,10 +64,13 @@ export default function UniverseSelector() {
               className="rounded-2xl p-7 border-[1.5px] flex flex-col"
               style={{ background: u.bg, borderColor: u.border }}
             >
-              <p className="text-[9px] font-bold tracking-[2px] uppercase mb-3" style={{ color: u.color }}>
+              <p className="text-[9px] font-bold tracking-[2px] uppercase mb-4" style={{ color: u.color }}>
                 {u.axis}
               </p>
-              <span className="text-4xl mb-3 block">{u.icon}</span>
+              <div className="w-9 h-9 rounded-lg flex items-center justify-center mb-4"
+                style={{ background: `color-mix(in srgb, ${u.color} 15%, transparent)` }}>
+                <u.Icon size={18} strokeWidth={1.5} style={{ color: u.color }} />
+              </div>
               <h3 className="heading-serif text-xl mb-3" style={{ color: u.color }}>
                 {u.title}
               </h3>

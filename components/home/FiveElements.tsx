@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Shield, Handshake, Zap, Sprout, Rocket } from 'lucide-react';
 import elements from '@/content/family-teamship.json';
 
 type Mode = 'corporate' | 'family';
@@ -13,13 +14,20 @@ const ELEMENT_COLORS: Record<string, string> = {
   MOMENTUM: 'var(--purple)',
 };
 
+const ELEMENT_ICONS: Record<string, React.ElementType> = {
+  SAFETY:   Shield,
+  TRUST:    Handshake,
+  ENERGY:   Zap,
+  GROWTH:   Sprout,
+  MOMENTUM: Rocket,
+};
+
 export default function FiveElements() {
   const [mode, setMode] = useState<Mode>('corporate');
 
   return (
     <section className="py-20" style={{ background: 'var(--cream)' }}>
       <div className="section-container">
-        {/* 헤더 */}
         <div className="text-center mb-10">
           <p className="text-[11px] font-bold tracking-widest uppercase mb-3" style={{ color: 'var(--rust)' }}>
             AX Teamship™ 5 Elements
@@ -28,7 +36,6 @@ export default function FiveElements() {
             같은 5요소, 두 개의 무대
           </h2>
 
-          {/* 토글 */}
           <div
             className="inline-flex rounded-full p-1 gap-1"
             style={{ background: 'var(--cream2)' }}
@@ -44,23 +51,26 @@ export default function FiveElements() {
                     : { color: 'var(--gray)' }
                 }
               >
-                {m === 'corporate' ? '🏢 기업 팀십' : '👨‍👩‍👧‍👦 가족 팀십'}
+                {m === 'corporate' ? '기업 팀십' : '가족 팀십'}
               </button>
             ))}
           </div>
         </div>
 
-        {/* 요소 카드 */}
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
           {elements.map((el) => {
             const color = ELEMENT_COLORS[el.key];
+            const Icon = ELEMENT_ICONS[el.key];
             return (
               <div
                 key={el.key}
                 className="rounded-xl p-5 flex flex-col gap-3 border border-[var(--rule)] bg-white last:col-span-2 last:lg:col-span-1"
               >
                 <div className="flex items-center gap-2">
-                  <span className="text-2xl">{el.icon}</span>
+                  <div className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0"
+                    style={{ background: `color-mix(in srgb, ${color} 12%, transparent)` }}>
+                    {Icon && <Icon size={14} strokeWidth={1.75} style={{ color }} />}
+                  </div>
                   <span
                     className="text-[10px] font-bold tracking-[1.5px] uppercase"
                     style={{ color }}

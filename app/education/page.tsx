@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { GraduationCap } from 'lucide-react';
 import CTAButton from '@/components/shared/CTAButton';
 
 export const metadata: Metadata = {
@@ -14,7 +15,10 @@ export default function EducationPage() {
           style={{ background: 'var(--sage-l)', color: 'var(--sage)', border: '1px solid var(--sage)' }}>
           COMING SOON
         </span>
-        <div className="text-6xl mb-6">🏫</div>
+        <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6"
+          style={{ background: 'var(--sage-l)', border: '1.5px solid rgba(77,124,90,.2)' }}>
+          <GraduationCap size={32} strokeWidth={1.5} style={{ color: 'var(--sage)' }} />
+        </div>
         <h1 className="heading-serif text-4xl md:text-5xl mb-4">교육 팀십</h1>
         <p className="text-[16px] max-w-md mx-auto mb-3 leading-relaxed" style={{ color: 'var(--gray)' }}>
           교사-학생 팀십. 교육청·학교 연계 프로그램.<br />

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Target, BarChart3, ArrowLeftRight } from 'lucide-react';
 import CTAButton from '@/components/shared/CTAButton';
 
 export const metadata: Metadata = {
@@ -30,7 +31,10 @@ export default function DiagnosisLanding() {
             <a href="/diagnosis/parent"
               className="rounded-2xl p-8 text-left hover:scale-[1.02] transition-transform cursor-pointer"
               style={{ background: 'var(--rust-l)', border: '1.5px solid rgba(196,98,45,.3)' }}>
-              <span className="text-4xl block mb-4">👩‍👦</span>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
+                style={{ background: 'rgba(196,98,45,.15)' }}>
+                <span className="heading-serif text-[13px] font-bold" style={{ color: 'var(--rust)' }}>부모</span>
+              </div>
               <p className="text-[10px] font-bold tracking-widest uppercase mb-2" style={{ color: 'var(--rust)' }}>부모용</p>
               <h2 className="heading-serif text-[18px] mb-2" style={{ color: 'var(--navy)' }}>부모 진단</h2>
               <p className="text-[12.5px] mb-4" style={{ color: 'var(--gray)' }}>18문항 · 약 5분</p>
@@ -40,7 +44,10 @@ export default function DiagnosisLanding() {
             <a href="/diagnosis/teen"
               className="rounded-2xl p-8 text-left hover:scale-[1.02] transition-transform cursor-pointer"
               style={{ background: 'var(--teal-l)', border: '1.5px solid rgba(46,110,126,.3)' }}>
-              <span className="text-4xl block mb-4">🧑‍🎒</span>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
+                style={{ background: 'rgba(46,110,126,.15)' }}>
+                <span className="heading-serif text-[13px] font-bold" style={{ color: 'var(--teal)' }}>자녀</span>
+              </div>
               <p className="text-[10px] font-bold tracking-widest uppercase mb-2" style={{ color: 'var(--teal)' }}>청소년용</p>
               <h2 className="heading-serif text-[18px] mb-2" style={{ color: 'var(--navy)' }}>청소년 진단</h2>
               <p className="text-[12.5px] mb-4" style={{ color: 'var(--gray)' }}>16문항 · 약 4분</p>
@@ -55,12 +62,15 @@ export default function DiagnosisLanding() {
         <div className="section-container">
           <div className="grid md:grid-cols-3 gap-8 text-center">
             {[
-              { icon: '🎯', title: '자기결정이론 기반', desc: 'SDT(Self-Determination Theory) 기반으로 설계된 과학적 진단' },
-              { icon: '📊', title: '6가지 부모 유형', desc: '균형성장형부터 회복성장형까지, 내 유형에 맞는 실천 가이드 제공' },
-              { icon: '🔗', title: '가족 비교 기능', desc: '부모와 자녀의 결과를 함께 보고 대화의 출발점을 만들어 드립니다' },
+              { Icon: Target,          title: '자기결정이론 기반', desc: 'SDT(Self-Determination Theory) 기반으로 설계된 과학적 진단' },
+              { Icon: BarChart3,       title: '6가지 부모 유형',   desc: '균형성장형부터 회복성장형까지, 내 유형에 맞는 실천 가이드 제공' },
+              { Icon: ArrowLeftRight,  title: '가족 비교 기능',    desc: '부모와 자녀의 결과를 함께 보고 대화의 출발점을 만들어 드립니다' },
             ].map((item) => (
               <div key={item.title} className="flex flex-col items-center">
-                <span className="text-4xl mb-4">{item.icon}</span>
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-4"
+                  style={{ background: 'var(--cream2)' }}>
+                  <item.Icon size={20} strokeWidth={1.5} style={{ color: 'var(--rust)' }} />
+                </div>
                 <h3 className="heading-serif text-[16px] mb-2">{item.title}</h3>
                 <p className="text-[12.5px] leading-relaxed" style={{ color: 'var(--gray)' }}>{item.desc}</p>
               </div>

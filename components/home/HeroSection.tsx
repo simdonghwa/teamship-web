@@ -1,9 +1,10 @@
 import CTAButton from '@/components/shared/CTAButton';
+import { Building2, Mic, Heart } from 'lucide-react';
 
 const TRUST_BADGES = [
-  { icon: '💼', text: 'Microsoft 21년' },
-  { icon: '🎤', text: '세바시 강연' },
-  { icon: '👶', text: '두 아이 엄마' },
+  { icon: Building2, text: 'Microsoft 21년' },
+  { icon: Mic,       text: '세바시 강연' },
+  { icon: Heart,     text: '두 아이 엄마' },
 ];
 
 export default function HeroSection() {
@@ -70,7 +71,7 @@ export default function HeroSection() {
               className="flex items-center gap-2 text-[12px] px-3 py-1.5 rounded-full"
               style={{ background: 'rgba(255,255,255,.08)', color: 'var(--lgray)' }}
             >
-              <span>{b.icon}</span>
+              <b.icon size={12} strokeWidth={1.5} />
               {b.text}
             </span>
           ))}
