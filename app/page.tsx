@@ -16,13 +16,7 @@ export default function HomePage() {
 
       {/* 강사 소개 */}
       <section className="py-20" style={{ background: 'var(--cream)' }}>
-        <div className="section-container flex flex-col md:flex-row items-center gap-10">
-          <div
-            className="w-40 h-40 md:w-52 md:h-52 rounded-full flex-shrink-0 flex items-center justify-center"
-            style={{ background: 'var(--cream2)', border: '1.5px solid var(--rule)' }}
-          >
-            <span className="heading-serif text-4xl md:text-5xl font-bold" style={{ color: 'var(--navy)' }}>이소</span>
-          </div>
+        <div className="section-container max-w-2xl">
           <div>
             <p className="text-[11px] font-bold tracking-widest uppercase mb-2" style={{ color: 'var(--rust)' }}>
               강사 소개

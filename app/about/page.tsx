@@ -21,40 +21,32 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="py-16 md:py-20" style={{ background: 'var(--navy)' }}>
         <div className="section-container">
-          <div className="flex flex-col md:flex-row items-center gap-12">
-            <div
-              className="w-48 h-48 md:w-56 md:h-56 rounded-full flex-shrink-0 flex items-center justify-center"
-              style={{ background: 'rgba(255,255,255,.08)', border: '1.5px solid rgba(255,255,255,.12)' }}
-            >
-              <span className="heading-serif text-5xl md:text-6xl font-bold" style={{ color: 'rgba(255,255,255,.7)' }}>이소</span>
+          <div className="max-w-2xl">
+            <div className="flex flex-wrap gap-2 mb-5">
+              <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full"
+                style={{ background: 'rgba(201,168,76,.2)', color: 'var(--gold)' }}>
+                세바시 강연 예정
+              </span>
+              <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full"
+                style={{ background: 'rgba(196,98,45,.25)', color: 'var(--rust)' }}>
+                Pioneer Mom
+              </span>
             </div>
-            <div>
-              <div className="flex flex-wrap gap-2 mb-5">
-                <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full"
-                  style={{ background: 'rgba(201,168,76,.2)', color: 'var(--gold)' }}>
-                  세바시 강연 예정
+            <h1 className="heading-serif text-4xl md:text-5xl mb-3" style={{ color: '#fff' }}>이소영</h1>
+            <p className="text-sm mb-5 leading-relaxed" style={{ color: 'var(--lgray)' }}>
+              Pioneer Mom · AI Transformation Leader · AX Teamship™ Creator
+            </p>
+            <div className="flex flex-wrap gap-2 mb-6">
+              {TAGS.map((t) => (
+                <span key={t} className="text-[11px] px-2.5 py-1 rounded-full"
+                  style={{ background: 'rgba(255,255,255,.08)', color: 'var(--lgray)' }}>
+                  {t}
                 </span>
-                <span className="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full"
-                  style={{ background: 'rgba(196,98,45,.25)', color: 'var(--rust)' }}>
-                  Pioneer Mom
-                </span>
-              </div>
-              <h1 className="heading-serif text-4xl md:text-5xl mb-3" style={{ color: '#fff' }}>이소영</h1>
-              <p className="text-sm mb-5 leading-relaxed" style={{ color: 'var(--lgray)' }}>
-                Pioneer Mom · AI Transformation Leader · AX Teamship™ Creator
-              </p>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {TAGS.map((t) => (
-                  <span key={t} className="text-[11px] px-2.5 py-1 rounded-full"
-                    style={{ background: 'rgba(255,255,255,.08)', color: 'var(--lgray)' }}>
-                    {t}
-                  </span>
-                ))}
-              </div>
-              <div className="flex flex-wrap gap-3">
-                <CTAButton href="/contact?type=corporate" variant="primary" size="md">강의 의뢰하기 →</CTAButton>
-                <CTAButton href="/contact?type=family" variant="sage" size="md">가족 팀십 문의 →</CTAButton>
-              </div>
+              ))}
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <CTAButton href="/contact?type=corporate" variant="primary" size="md">강의 의뢰하기 →</CTAButton>
+              <CTAButton href="/contact?type=family" variant="sage" size="md">가족 팀십 문의 →</CTAButton>
             </div>
           </div>
         </div>
