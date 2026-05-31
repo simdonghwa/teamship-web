@@ -3,117 +3,88 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { cn } from '@/lib/utils';
-
-const NAV = [
-  {
-    label: '기업 팀십',
-    href: '/corporate',
-    sub: [
-      { label: 'AX Teamship™ 소개', href: '/corporate' },
-      { label: '워크숍 프로그램', href: '/corporate#workshop' },
-      { label: 'AX Bootcamp', href: '/corporate#bootcamp' },
-      { label: '강의 의뢰', href: '/contact?type=corporate' },
-    ],
-  },
-  {
-    label: '가족 팀십',
-    href: '/family',
-    badge: 'NEW',
-    sub: [
-      { label: '가족 팀십이란?', href: '/family' },
-      { label: '부모 워크숍', href: '/family#workshop' },
-      { label: '강의 신청', href: '/contact?type=family' },
-      { label: '자기결정력 진단', href: '/diagnosis' },
-    ],
-  },
-  {
-    label: '자기결정력 진단',
-    href: '/diagnosis',
-    badge: 'NEW',
-    sub: [
-      { label: '부모용 진단 (18문항)', href: '/diagnosis/parent' },
-      { label: '청소년용 진단 (16문항)', href: '/diagnosis/teen' },
-    ],
-  },
-  { label: '강사 소개', href: '/about' },
-  { label: '문의하기', href: '/contact' },
-];
+import { NAV, PROGRAM_SUBNAV } from '@/lib/content';
 
 export default function Header() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [programsOpen, setProgramsOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => { setOpen(false); setActiveDropdown(null); }, [pathname]);
+  useEffect(() => { setMenuOpen(false); setProgramsOpen(false); }, [pathname]);
+
+  const isActive = (href: string) =>
+    href === '/' ? pathname === '/' : pathname.startsWith(href);
 
   return (
     <header
-      className={cn(
-        'sticky top-0 z-50 transition-shadow duration-200',
-        scrolled ? 'shadow-sm bg-[var(--cream)]' : 'bg-[var(--cream)]',
-        'border-b border-[var(--rule)]'
-      )}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      style={{
+        background: scrolled ? 'rgba(242,237,227,0.92)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(12px)' : 'none',
+        borderBottom: scrolled ? '1px solid var(--rule-lt)' : '1px solid transparent',
+      }}
     >
-      <div className="section-container flex items-center justify-between h-16">
+      <div className="container-wide flex items-center justify-between h-[68px]">
+
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 flex-shrink-0">
+        <Link href="/" className="flex-shrink-0">
           <span
-            className="heading-serif text-[18px] tracking-tight"
-            style={{ color: 'var(--navy)' }}
+            className="display text-[19px] tracking-tight"
+            style={{ color: scrolled ? 'var(--ink)' : 'var(--bone)' }}
           >
-            Teamship™
+            AX Teamship™
           </span>
         </Link>
 
-        {/* PC 네비게이션 */}
+        {/* Desktop nav */}
         <nav className="hidden lg:flex items-center gap-1">
           {NAV.map((item) => (
             <div
               key={item.href}
               className="relative"
-              onMouseEnter={() => item.sub && setActiveDropdown(item.href)}
-              onMouseLeave={() => setActiveDropdown(null)}
+              onMouseEnter={() => item.hasSub && setProgramsOpen(true)}
+              onMouseLeave={() => setProgramsOpen(false)}
             >
               <Link
                 href={item.href}
-                className={cn(
-                  'flex items-center gap-1 px-3 py-2 text-[13px] font-medium rounded-md transition-colors',
-                  pathname.startsWith(item.href) && item.href !== '/'
-                    ? 'text-[var(--rust)] bg-[var(--rust-l)]'
-                    : 'text-[var(--navy)] hover:text-[var(--rust)] hover:bg-[var(--rust-l)]'
-                )}
+                className="px-4 py-2 label transition-colors rounded-md"
+                style={{
+                  color: isActive(item.href)
+                    ? 'var(--rust)'
+                    : scrolled ? 'var(--ink)' : 'rgba(242,237,227,0.75)',
+                }}
               >
                 {item.label}
-                {item.badge && (
-                  <span className="text-[9px] font-bold bg-[var(--rust)] text-white px-1.5 py-0.5 rounded-sm leading-none">
-                    {item.badge}
-                  </span>
-                )}
-                {item.sub && (
-                  <svg className="w-3 h-3 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                )}
               </Link>
 
-              {/* 드롭다운 */}
-              {item.sub && activeDropdown === item.href && (
-                <div className="absolute top-full left-0 mt-1 w-48 bg-white border border-[var(--rule)] rounded-lg shadow-lg py-1 z-50">
-                  {item.sub.map((s) => (
+              {/* Programs dropdown */}
+              {item.hasSub && programsOpen && (
+                <div
+                  className="absolute top-full left-0 mt-2 py-2 rounded-xl shadow-xl border"
+                  style={{
+                    background: 'var(--ink-2)',
+                    borderColor: 'var(--rule-dk)',
+                    minWidth: '220px',
+                  }}
+                >
+                  {PROGRAM_SUBNAV.map((s) => (
                     <Link
                       key={s.href}
                       href={s.href}
-                      className="block px-4 py-2 text-[12.5px] text-[var(--text)] hover:text-[var(--rust)] hover:bg-[var(--rust-l)] transition-colors"
+                      className="block px-5 py-3 transition-colors"
+                      style={{ color: 'var(--bone)' }}
+                      onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--ink-3)')}
+                      onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
                     >
-                      {s.label}
+                      <span className="block text-[13px] font-semibold mb-0.5">{s.label}</span>
+                      <span className="label" style={{ color: 'var(--muted-on-dark)', fontSize: '10px' }}>{s.desc}</span>
                     </Link>
                   ))}
                 </div>
@@ -122,64 +93,57 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* 진단하기 CTA + 햄버거 */}
+        {/* CTA + hamburger */}
         <div className="flex items-center gap-3">
           <Link
-            href="/diagnosis"
-            className="hidden sm:inline-flex items-center px-4 py-2 text-[12.5px] font-bold rounded-full transition-colors"
-            style={{ background: 'var(--rust)', color: '#fff' }}
+            href="/contact"
+            className="hidden sm:inline-flex btn-primary text-[13px] py-2.5 px-5"
           >
-            지금 진단하기 →
+            상담 신청 →
           </Link>
 
-          {/* 햄버거 (모바일) */}
           <button
-            onClick={() => setOpen(!open)}
-            className="lg:hidden p-2 rounded-md text-[var(--navy)]"
-            aria-label="메뉴 열기"
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="lg:hidden p-2 rounded-md"
+            aria-label="메뉴"
+            style={{ color: scrolled ? 'var(--ink)' : 'var(--bone)' }}
           >
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              {open ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+              {menuOpen
+                ? <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                : <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              }
             </svg>
           </button>
         </div>
       </div>
 
-      {/* 모바일 메뉴 */}
-      {open && (
-        <div className="lg:hidden border-t border-[var(--rule)] bg-[var(--cream)]">
-          <div className="section-container py-4 flex flex-col gap-1">
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div
+          className="lg:hidden border-t"
+          style={{ background: 'var(--ink)', borderColor: 'var(--rule-dk)' }}
+        >
+          <div className="container-wide py-6 flex flex-col gap-1">
             {NAV.map((item) => (
               <div key={item.href}>
                 <Link
                   href={item.href}
-                  className={cn(
-                    'flex items-center gap-2 px-3 py-2.5 text-[13px] font-medium rounded-md',
-                    pathname.startsWith(item.href) && item.href !== '/'
-                      ? 'text-[var(--rust)] bg-[var(--rust-l)]'
-                      : 'text-[var(--navy)]'
-                  )}
+                  className="block px-3 py-3 text-[14px] font-medium rounded-md transition-colors"
+                  style={{ color: isActive(item.href) ? 'var(--gold)' : 'var(--bone)' }}
                 >
                   {item.label}
-                  {item.badge && (
-                    <span className="text-[9px] font-bold bg-[var(--rust)] text-white px-1.5 py-0.5 rounded-sm leading-none">
-                      {item.badge}
-                    </span>
-                  )}
                 </Link>
-                {item.sub && (
-                  <div className="pl-4 flex flex-col gap-0.5">
-                    {item.sub.map((s) => (
+                {item.hasSub && (
+                  <div className="pl-4 flex flex-col gap-0.5 mb-2">
+                    {PROGRAM_SUBNAV.map((s) => (
                       <Link
                         key={s.href}
                         href={s.href}
-                        className="px-3 py-1.5 text-[12px] text-[var(--gray)] hover:text-[var(--rust)]"
+                        className="px-3 py-2 label"
+                        style={{ color: 'var(--muted-on-dark)', fontSize: '11px' }}
                       >
-                        {s.label}
+                        {s.label} — {s.desc}
                       </Link>
                     ))}
                   </div>
@@ -187,11 +151,10 @@ export default function Header() {
               </div>
             ))}
             <Link
-              href="/diagnosis"
-              className="mt-2 flex items-center justify-center px-4 py-2.5 text-[13px] font-bold rounded-full"
-              style={{ background: 'var(--rust)', color: '#fff' }}
+              href="/contact"
+              className="btn-primary mt-4 justify-center"
             >
-              지금 진단하기 →
+              상담 신청 →
             </Link>
           </div>
         </div>

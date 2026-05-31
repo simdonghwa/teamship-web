@@ -1,14 +1,15 @@
 import type { Metadata } from 'next';
-import { Noto_Serif_KR, JetBrains_Mono } from 'next/font/google';
+import { Fraunces, JetBrains_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import SmoothScroll from '@/components/shared/SmoothScroll';
 
-const notoSerifKR = Noto_Serif_KR({
-  variable: '--font-noto-serif-kr',
+const fraunces = Fraunces({
   subsets: ['latin'],
-  weight: ['400', '600', '700'],
+  variable: '--font-fraunces',
+  weight: ['300', '400', '600', '700', '900'],
   display: 'swap',
 });
 
@@ -28,17 +29,17 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Teamship — 팀십은 가족에서 시작된다',
-    template: '%s | Teamship',
+    default: 'AX Teamship™ — AI 시대, 살아남는 팀의 조건',
+    template: '%s · AX Teamship™',
   },
   description:
-    'AI 시대, 기업과 가정을 잇는 한국 최초 팀십 빌딩 플랫폼. 자기결정력 진단, 가족 팀십 워크숍, 기업 AX 리더십 강의.',
-  keywords: ['팀십', '가족 팀십', '자기결정력', 'AX 리더십', 'AI 시대 자녀교육', '이소영', 'AX Teamship'],
+    'AX Teamship™ 5요소 기반 기업 워크숍·부트캠프·키노트. 심리적 안전·위임·에너지·성장·모멘텀으로 팀을 바꿉니다.',
+  keywords: ['AX Teamship', '팀십', '기업 워크숍', '리더십', '조직 개발', 'AI 전환', '심리적 안전', '이소영'],
   openGraph: {
     type: 'website',
     locale: 'ko_KR',
-    url: 'https://teamship.co.kr',
-    siteName: 'Teamship',
+    url: 'https://axteamship.com',
+    siteName: 'AX Teamship™',
   },
 };
 
@@ -46,12 +47,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="ko"
-      className={`${notoSerifKR.variable} ${pretendard.variable} ${jetbrainsMono.variable}`}
+      className={`${fraunces.variable} ${pretendard.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="min-h-screen flex flex-col bg-white text-[var(--text)] antialiased">
-        <Header />
-        <main className="flex-1 flex flex-col">{children}</main>
-        <Footer />
+      <body className="min-h-screen flex flex-col antialiased" style={{ background: 'var(--bone)', color: 'var(--ink)' }}>
+        <SmoothScroll>
+          <Header />
+          <main className="flex-1 flex flex-col">{children}</main>
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );

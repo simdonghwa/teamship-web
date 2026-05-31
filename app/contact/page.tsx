@@ -1,32 +1,94 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import ContactForm from '@/components/contact/ContactForm';
+import { SITE } from '@/lib/content';
 
 export const metadata: Metadata = {
-  title: '문의하기',
-  description: '기업 강의 의뢰, 가족 팀십 워크숍 신청, 강연 의뢰. 무엇이든 먼저 물어보세요.',
+  title: '상담 신청',
+  description:
+    '30분 무료 상담으로 팀 변화를 시작합니다. 워크숍·부트캠프·키노트·컨설팅 문의 환영.',
 };
 
 export default function ContactPage() {
   return (
     <>
-      <section className="py-20" style={{ background: 'var(--navy)' }}>
-        <div className="section-container text-center">
-          <p className="text-[11px] font-bold tracking-widest uppercase mb-4" style={{ color: 'var(--rust)' }}>
-            문의하기
+      {/* ── Hero ── */}
+      <section className="section" style={{ background: 'var(--ink)' }}>
+        <div className="container-wide">
+          <p className="label mb-6" style={{ color: 'var(--gold)' }}>
+            상담 신청
           </p>
-          <h1 className="heading-serif text-4xl md:text-5xl mb-4" style={{ color: '#fff' }}>
-            함께 시작해요
+          <h1
+            className="display"
+            style={{
+              fontSize: 'clamp(36px, 5vw, 56px)',
+              color: 'var(--bone)',
+              marginBottom: '16px',
+              whiteSpace: 'pre-line',
+            }}
+          >
+            {'팀을 바꾸는 첫\n30분'}
           </h1>
-          <p className="text-[15px] max-w-md mx-auto" style={{ color: 'var(--lgray)' }}>
-            기업 강의부터 가족 워크숍까지,<br />어떤 문의도 환영합니다.
+          <p
+            style={{
+              fontSize: '18px',
+              color: 'var(--muted-on-dark)',
+              marginBottom: '40px',
+            }}
+          >
+            무료 상담으로 시작합니다
           </p>
+
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '12px',
+              padding: '16px 24px',
+              border: '1px solid var(--rule-dk)',
+              borderRadius: '8px',
+            }}
+          >
+            <span
+              className="label"
+              style={{ color: 'var(--muted-on-dark)', fontSize: '10px' }}
+            >
+              직접 문의
+            </span>
+            <a
+              href={`mailto:${SITE.email}`}
+              style={{
+                fontSize: '15px',
+                color: 'var(--bone)',
+                fontWeight: 500,
+                textDecoration: 'none',
+              }}
+            >
+              {SITE.email}
+            </a>
+          </div>
         </div>
       </section>
 
-      <section className="py-16 flex-1" style={{ background: 'var(--cream)' }}>
-        <div className="section-container max-w-2xl">
-          <Suspense fallback={<div className="py-12 text-center text-[var(--lgray)]">로딩 중...</div>}>
+      {/* ── Form ── */}
+      <section className="section" style={{ background: 'var(--bone)' }}>
+        <div
+          className="container-wide"
+          style={{ maxWidth: '720px' }}
+        >
+          <Suspense
+            fallback={
+              <div
+                style={{
+                  padding: '60px',
+                  textAlign: 'center',
+                  color: 'var(--muted-on-light)',
+                }}
+              >
+                로딩 중...
+              </div>
+            }
+          >
             <ContactForm />
           </Suspense>
         </div>

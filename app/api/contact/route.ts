@@ -16,10 +16,11 @@ export async function POST(req: NextRequest) {
       const resend = new Resend(resendKey);
 
       const typeLabels: Record<string, string> = {
-        corporate: '기업 강의·워크숍',
-        family:    '가족 팀십 워크숍',
-        speaker:   '강연 의뢰',
-        other:     '기타 문의',
+        workshop:   '워크숍',
+        bootcamp:   '부트캠프',
+        keynote:    '키노트',
+        consulting: '컨설팅·자문',
+        other:      '기타 문의',
       };
 
       await resend.emails.send({
